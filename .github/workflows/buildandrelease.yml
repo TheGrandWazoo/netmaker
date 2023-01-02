@@ -58,7 +58,7 @@ jobs:
         uses: actions/setup-go@v3
         with:
           go-version: 1.19
-      - name: Build
+      - name: Build Linux Binary
         run: |
           env CGO_ENABLED=1 GOOS=linux GOARCH=amd64 go build -ldflags="-X 'main.version=${NETMAKER_VERSION}'" -o build/netmaker main.go
       - name: Upload netmaker x86 to Release
@@ -90,10 +90,10 @@ jobs:
         uses: actions/setup-go@v3
         with:
           go-version: 1.19
-      - name: Build
+      - name: Build FreeBSD Binary
         run: |
           env CGO_ENABLED=1 GOOS=freebsd GOARCH=amd64 go build -ldflags="-X 'main.version=${NETMAKER_VERSION}'" -o build/netmaker-freebsd main.go
-      - name: Upload netmaker x86 to Release
+      - name: Upload netmaker-freebsd x86 to Release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
