@@ -92,7 +92,7 @@ jobs:
           go-version: 1.19
       - name: Build FreeBSD Binary
         run: |
-          env CGO_ENABLED=0 GOOS=freebsd GOARCH=amd64 go build -ldflags="-X 'main.version=${NETMAKER_VERSION}'" -o build/netmaker-freebsd/netmaker main.go
+          env CGO_ENABLED=1 GOOS=freebsd GOARCH=amd64 go build -ldflags="-X 'main.version=${NETMAKER_VERSION}'" -o build/netmaker-freebsd/netmaker main.go
       - name: Upload netmaker Freebsd x86 to Release
         uses: svenstaro/upload-release-action@v2
         with:
